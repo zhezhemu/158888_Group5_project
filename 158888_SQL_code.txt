@@ -1,0 +1,918 @@
+#DataSourceSettings#
+#LocalDataSource: SDGs_158888
+#BEGIN#
+<data-source source="LOCAL" name="SDGs_158888" uuid="e39b8f09-d58d-4c03-b4de-6411ca6a840a"><database-info product="Apache Hive" version="3.1.2" jdbc-version="3.0" driver-name="Hive JDBC" driver-version="3.1.2" dbms="HIVE" exact-version="3.1.2" exact-driver-version="3.1"/><case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/><driver-ref>hive</driver-ref><synchronize>true</synchronize><jdbc-driver>org.apache.hive.jdbc.HiveDriver</jdbc-driver><jdbc-url>jdbc:hive2://guojiban1:10000</jdbc-url><secret-storage>master_key</secret-storage><user-name>gjb</user-name><schema-mapping><introspection-scope><node kind="schema"><name qname="@"/><name qname="158888_sdgs"/></node></introspection-scope></schema-mapping><working-dir>$ProjectFileDir$</working-dir></data-source>
+#END#
+--------------------------------------------------------------------------
+create database if not exists 158888_SDGs;
+
+----------ods----------
+create table if not exists ods_Trade_policy_compatibility_1(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    2023_SDG_Index_Score double comment '2023_Score',
+    2023_SDG_Index_Rank int comment '2023_Rank',
+    sdg8_adjgrowth double comment 'sdg8_adjgrowth',
+    Threshold_1 double comment 'Threshold_1',
+    sdg8_accounts double comment 'sdg8_accounts',
+    Threshold_2 double comment 'Threshold_2',
+    sdg8_unemp double comment 'sdg8_unemp',
+    Threshold_3 double comment 'Threshold_3',
+    sdg8_rights double comment 'sdg8_rights',
+    Threshold_4 double comment 'Threshold_4',
+    sdg8_impacc double comment 'sdg8_impacc',
+    Threshold_5 double comment 'Threshold_5',
+    sdg8_impslav double comment 'sdg8_impslav',
+    Threshold_6 double comment 'Threshold_6',
+    sdg9_lpi double comment 'sdg9_lpi',
+    Threshold_7 double comment 'Threshold_7',
+    sdg12_so2prod double comment 'sdg12_so2prod',
+    Threshold_8 double comment 'Threshold_8',
+    sdg12_so2import double comment 'sdg12_so2import',
+    Threshold_9 double comment 'Threshold_9',
+    sdg13_co2import double comment 'sdg13_co2import',
+    Threshold_10 double comment 'Threshold_10',
+    sdg13_co2export double comment 'sdg13_co2export',
+    Threshold_11 double comment 'Threshold_11'
+)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    NULL DEFINED AS ''
+    LOCATION '/158888/ods/ods_Trade_policy_compatibility_1';
+    LOAD DATA inpath '/order/Trade_policy_compatibility_1' overwrite into table ods_Trade_policy_compatibility_1;
+
+create table if not exists ods_Trade_policy_compatibility_2(
+    IndCode string comment 'IndCode',
+    SDG int comment 'SDG',
+    global int comment 'global',
+    oecd int comment 'oecd',
+    spillover int comment 'spillover',
+    trend int comment 'trend',
+    trendoecd int comment 'Direction',
+    Direction string comment 'Direction',
+    Optimum double comment 'Optimum',
+    Green_threshold double comment 'G_threshold',
+    Red_threshold double comment 'R_threshold',
+    Lower_bound double comment 'Lower_bound',
+    Justification_for_Optimum string comment 'jfo'
+)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    NULL DEFINED AS ''
+    LOCATION '/158888/ods/ods_Trade_policy_compatibility_2';
+    LOAD DATA inpath '/order/Trade_policy_compatibility_2' overwrite into table ods_Trade_policy_compatibility_2;
+
+create table if not exists ods_Multi_indicator_analysis(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    Regions_used_for_the_SDR string comment 'regions',
+    Goal_1_Score double,
+    Goal_2_Score double,
+    Goal_3_Score double,
+    Goal_4_Score double,
+    Goal_5_Score double,
+    Goal_6_Score double,
+    Goal_7_Score double,
+    Goal_8_Score double,
+    Goal_9_Score double,
+    Goal_10_Score double,
+    Goal_11_Score double,
+    Goal_12_Score double,
+    Goal_13_Score double,
+    Goal_14_Score double,
+    Goal_15_Score double,
+    Goal_16_Score double,
+    Goal_17_Score double
+)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    NULL DEFINED AS ''
+    LOCATION '/158888/ods/ods_Multi_indicator_analysis';
+    LOAD DATA inpath '/order/Multi_indicator_analysis' overwrite into table ods_Multi_indicator_analysis;
+
+create table if not exists ods_trend_analysis_1(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int comment 'year',
+    Goal_8_Score double,
+    sdg8_unemp double,
+    sdg8_adjgrowth double
+)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    NULL DEFINED AS ''
+    LOCATION '/158888/ods/ods_trend_analysis_1';
+    LOAD DATA inpath '/order/trend_analysis_1' overwrite into table ods_trend_analysis_1;
+
+create table if not exists ods_trend_analysis_2(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int comment 'year',
+    Goal_8_Score double,
+    sdg8_unemp double,
+    sdg8_adjgrowth double
+)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    NULL DEFINED AS ''
+    LOCATION '/158888/ods/ods_trend_analysis_2';
+    LOAD DATA inpath '/order/trend_analysis_2' overwrite into table ods_trend_analysis_2;
+
+create table if not exists ods_R_total_1(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    Year_sdg10_gini int,
+    Score_sdg10_gini double,
+    Palma_ratio double,
+    Year_sdg10_palma int,
+    Score_sdg10_palma double,
+    Elderly_poverty_rate double,
+    Year_sdg10_elder int,
+    Score_sdg2_wasting double,
+    Shifted_profits_of_multinationals double,
+    Year_sdg17_sprofits int,
+    Statistical_Performance_Index double,
+    Year_sdg17_statperf int,
+    Score_sdg17_statperf double,
+    Unemployment_rate double,
+    Year_sdg8_unemp int,
+    Score_sdg8_unemp double,
+    Fundamental_labor_rights_are_effectively_guaranteed double,
+    Year_sdg8_rights int,
+    Score_sdg8_rights double,
+    Employment_to_population_ratio double,
+    Year_sdg8_empop int,
+    Cereal_yield double,
+    Score_sdg2_crlyld double,
+    Yield_gap_closure double,
+    Year_sdg2_yieldgap int,
+    Poverty_headcount_ratio_at_215 double,
+    Year_sdg1_wpc int,
+    Score_sdg1_wpc double,
+    Poverty_headcount_ratio_at_365 double,
+    Year_sdg1_lmicpov int,
+    Score_sdg1_lmicpov double,
+    Poverty_rate_after_taxes_and_transfers double,
+    Year_sdg1_oecdpov int
+)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    NULL DEFINED AS ''
+    LOCATION '/158888/ods/ods_R_total_1';
+    LOAD DATA inpath '/order/R_total_1' overwrite into table ods_R_total_1;
+
+create table if not exists ods_R_total_2(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int,
+    n_sdg2_wasting double,
+    n_sdg10_gini double,
+    n_sdg10_palma double,
+    n_sdg8_unemp double,
+    n_sdg8_rights double,
+    n_sdg17_statperf double,
+    n_sdg2_crlyld double,
+    n_sdg1_wpc double,
+    n_sdg1_lmicpov double
+)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    NULL DEFINED AS ''
+    LOCATION '/158888/ods/ods_R_total_2';
+    LOAD DATA inpath '/order/R_total_2' overwrite into table ods_R_total_2;
+
+create table if not exists ods_n_2(
+    Neonatal_mortality_rate double,
+    Year_sdg3_neonat int,
+    sdg3_neonat double,
+    Life_expectancy_at_birth double,
+    Year_sdg3_lifee int,
+    Score_sdg3_lifee double,
+    Maternal_mortality_rate double,
+    Year_sdg3_matmort int,
+    sdg3_matmort double,
+    Adjusted_GDP_growth double,
+    Year_sdg8_adjgrowth int,
+    sdg8_adjgrowth double
+)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    NULL DEFINED AS ''
+    LOCATION '/158888/ods/ods_n_2';
+    LOAD DATA inpath '/order/n_2' overwrite into table ods_n_2;
+
+--------dwd--------
+create table if not exists dwd_Trade_policy_compatibility_1(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string,
+    2023_SDG_Index_Score double,
+    2023_SDG_Index_Rank int,
+    sdg8_adjgrowth double,
+    Threshold_1 double,
+    sdg8_accounts double,
+    Threshold_2 double,
+    sdg8_unemp double,
+    Threshold_3 double,
+    sdg8_rights double,
+    Threshold_4 double,
+    sdg8_impacc double,
+    Threshold_5 double,
+    sdg8_impslav double,
+    Threshold_6 double,
+    sdg9_lpi double,
+    Threshold_7 double,
+    sdg12_so2prod double,
+    Threshold_8 double,
+    sdg12_so2import double,
+    Threshold_9 double,
+    sdg13_co2import double,
+    Threshold_10 double,
+    sdg13_co2export double,
+    Threshold_11 double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_Trade_policy_compatibility_2';
+
+insert overwrite table dwd_Trade_policy_compatibility_1
+select
+Country_Code_ISO3,
+Country,
+2023_SDG_Index_Score,
+2023_SDG_Index_Rank,
+sdg8_adjgrowth,
+Threshold_1,
+sdg8_accounts,
+Threshold_2,
+sdg8_unemp,
+Threshold_3,
+sdg8_rights,
+Threshold_4,
+sdg8_impacc,
+Threshold_5,
+sdg8_impslav,
+Threshold_6,
+sdg9_lpi,
+Threshold_7,
+sdg12_so2prod,
+Threshold_8,
+sdg12_so2import,
+Threshold_9,
+sdg13_co2import,
+Threshold_10,
+sdg13_co2export,
+Threshold_11
+from ods_trade_policy_compatibility_1
+where
+    2023_SDG_Index_Rank is not null and 2023_SDG_Index_Score IS NOT NULL and sdg8_adjgrowth is not null and Threshold_1 is not null and sdg8_accounts is not null and Threshold_2 is not null and  sdg8_unemp is not null and
+    Threshold_3 is not null and Threshold_4 is not null and
+    sdg8_impacc is not null and Threshold_5 is not null and sdg8_impslav is not null and
+    Threshold_6 is not null and sdg9_lpi is not null and
+    Threshold_7 is not null and sdg12_so2prod is not null and
+    Threshold_8 is not null and sdg12_so2import is not null and
+    Threshold_9 is not null and sdg13_co2import is not null and
+    Threshold_10 is not null and sdg13_co2export is not null and Threshold_11 is not null;
+
+create table if not exists dwd_Trade_policy_compatibility_2(
+    IndCode string,
+    Direction string,
+    Green_threshold double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_Trade_policy_compatibility_1';
+
+insert overwrite table dwd_Trade_policy_compatibility_2
+select
+IndCode,
+Direction,
+Green_threshold
+from ods_trade_policy_compatibility_2
+where Green_threshold is not null and Direction is not null ;
+
+create table if not exists dwd_Multi_indicator_analysis(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    Regions_used_for_the_SDR string comment 'regions',
+    Goal_1_Score double,
+    Goal_2_Score double,
+    Goal_3_Score double,
+    Goal_4_Score double,
+    Goal_5_Score double,
+    Goal_6_Score double,
+    Goal_7_Score double,
+    Goal_8_Score double,
+    Goal_9_Score double,
+    Goal_10_Score double,
+    Goal_11_Score double,
+    Goal_12_Score double,
+    Goal_13_Score double,
+    Goal_14_Score double,
+    Goal_15_Score double,
+    Goal_16_Score double,
+    Goal_17_Score double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_Multi_indicator_analysis';
+
+insert overwrite table dwd_Multi_indicator_analysis
+select *
+from ods_Multi_indicator_analysis
+where Regions_used_for_the_SDR = 'OECD' and Goal_1_Score is not null and Goal_14_Score is not null;
+
+drop table if exists dwd_R_table_1;
+create table if not exists dwd_R_table_1(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    Year_sdg10_gini int,
+    Score_sdg10_gini double,
+    Palma_ratio double,
+    Year_sdg10_palma int,
+    Score_sdg10_palma double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_R_table_1';
+
+insert overwrite table dwd_R_table_1
+select
+Country_Code_ISO3,
+Country,
+Year_sdg10_gini,
+Score_sdg10_gini,
+Palma_ratio,
+Year_sdg10_palma,
+Score_sdg10_palma
+from ods_R_total_1
+where Year_sdg10_gini is not null and Score_sdg10_gini is not null and Score_sdg10_gini is not null and Palma_ratio is not null and Year_sdg10_palma is not null and Score_sdg10_palma is not null;
+
+create table if not exists dwd_R_table_2(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int,
+    n_sdg2_wasting double,
+    n_sdg10_gini double,
+    n_sdg10_palma double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_R_table_2';
+
+-----------------------------------
+drop table if exists dwd_R_table_3;
+create table if not exists dwd_R_table_3(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    Shifted_profits_of_multinationals double,
+    Year_sdg17_sprofits int,
+    Statistical_Performance_Index double,
+    Year_sdg17_statperf int,
+    Score_sdg17_statperf double,
+    Unemployment_rate double,
+    Year_sdg8_unemp int,
+    Score_sdg8_unemp double,
+    Fundamental_labor_rights_are_effectively_guaranteed double,
+    Year_sdg8_rights int,
+    Score_sdg8_rights double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_R_table_3';
+
+insert overwrite table dwd_R_table_3
+select
+Country_Code_ISO3,
+Country,
+Shifted_profits_of_multinationals,
+Year_sdg17_sprofits,
+Statistical_Performance_Index,
+Year_sdg17_statperf,
+Score_sdg17_statperf,
+Unemployment_rate,
+Year_sdg8_unemp,
+Score_sdg8_unemp,
+Fundamental_labor_rights_are_effectively_guaranteed,
+Year_sdg8_rights,
+Score_sdg8_rights
+from ods_R_total_1
+where Shifted_profits_of_multinationals is not null and Year_sdg17_sprofits is not null and Statistical_Performance_Index is not null and Year_sdg17_statperf is not null and
+Score_sdg17_statperf is not null and
+Unemployment_rate is not null and
+Year_sdg8_unemp is not null and
+Score_sdg8_unemp is not null and
+Fundamental_labor_rights_are_effectively_guaranteed is not null and
+Year_sdg8_rights is not null and
+Score_sdg8_rights  is not null;
+
+create table if not exists dwd_R_table_4(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int,
+    n_sdg8_unemp double,
+    n_sdg8_rights double,
+    n_sdg17_statperf double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_R_table_4';
+
+insert overwrite table dwd_R_table_4
+select
+Country_Code_ISO3,
+Country,
+year,
+n_sdg8_unemp,
+n_sdg8_rights,
+n_sdg17_statperf
+from ods_R_total_2
+where year is not null and n_sdg8_unemp is not null and n_sdg8_rights is not null and n_sdg17_statperf is not null ;
+
+---------------------------------------------------------
+
+drop table if exists dwd_R_table_5;
+create table if not exists dwd_R_table_5(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    Cereal_yield double,
+    Score_sdg2_crlyld double,
+    Yield_gap_closure double,
+    Year_sdg2_yieldgap int,
+    Poverty_headcount_ratio_at_215 double,
+    Year_sdg1_wpc int,
+    Score_sdg1_wpc double,
+    Poverty_headcount_ratio_at_365 double,
+    Year_sdg1_lmicpov int,
+    Score_sdg1_lmicpov double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_R_table_5';
+insert overwrite table dwd_R_table_5
+select
+Country_Code_ISO3,
+Country,
+Cereal_yield,
+Score_sdg2_crlyld,
+Yield_gap_closure,
+Year_sdg2_yieldgap,
+Poverty_headcount_ratio_at_215,
+Year_sdg1_wpc,
+Score_sdg1_wpc,
+Poverty_headcount_ratio_at_365,
+Year_sdg1_lmicpov,
+Score_sdg1_lmicpov
+from ods_R_total_1
+where Cereal_yield is not null and Score_sdg2_crlyld is not null and Yield_gap_closure is not null and Year_sdg2_yieldgap is not null and
+Poverty_headcount_ratio_at_215 is not null and
+Year_sdg1_wpc is not null and
+Score_sdg1_wpc is not null and
+Poverty_headcount_ratio_at_365 is not null and
+Year_sdg1_lmicpov is not null and
+Score_sdg1_lmicpov is not null ;
+
+create table if not exists dwd_R_table_6(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int,
+    n_sdg2_crlyld double,
+    n_sdg1_wpc double,
+    n_sdg1_lmicpov double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_R_table_6';
+
+insert overwrite table dwd_R_table_6
+select
+Country_Code_ISO3,
+Country,
+year,
+n_sdg2_crlyld,
+n_sdg1_wpc,
+n_sdg1_lmicpov
+from ods_R_total_2
+where year is not null and n_sdg2_crlyld is not null and n_sdg1_wpc is not null and n_sdg1_lmicpov is not null ;
+
+insert overwrite table dwd_R_table_3
+select
+Country_Code_ISO3,
+Country,
+Shifted_profits_of_multinationals,
+Year_sdg17_sprofits,
+Statistical_Performance_Index,
+Year_sdg17_statperf,
+Score_sdg17_statperf,
+Unemployment_rate,
+Year_sdg8_unemp,
+Score_sdg8_unemp,
+Fundamental_labor_rights_are_effectively_guaranteed,
+Year_sdg8_rights,
+Score_sdg8_rights
+from ods_R_total_1
+where Shifted_profits_of_multinationals is not null and Year_sdg17_sprofits is not null and Statistical_Performance_Index is not null and Year_sdg17_statperf is not null and
+Score_sdg17_statperf is not null and
+Unemployment_rate is not null and
+Year_sdg8_unemp is not null and
+Score_sdg8_unemp is not null and
+Fundamental_labor_rights_are_effectively_guaranteed is not null and
+Year_sdg8_rights is not null and
+Score_sdg8_rights  is not null;
+
+create table if not exists dwd_R_table_4(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int,
+    n_sdg8_unemp double,
+    n_sdg8_rights double,
+    n_sdg17_statperf double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_R_table_4';
+
+insert overwrite table dwd_R_table_3
+select
+Country_Code_ISO3,
+Country,
+Shifted_profits_of_multinationals,
+Year_sdg17_sprofits,
+Statistical_Performance_Index,
+Year_sdg17_statperf,
+Score_sdg17_statperf,
+Unemployment_rate,
+Year_sdg8_unemp,
+Score_sdg8_unemp,
+Fundamental_labor_rights_are_effectively_guaranteed,
+Year_sdg8_rights,
+Score_sdg8_rights
+from ods_R_total_1
+where Shifted_profits_of_multinationals is not null and Year_sdg17_sprofits is not null and Statistical_Performance_Index is not null and Year_sdg17_statperf is not null and
+Score_sdg17_statperf is not null and
+Unemployment_rate is not null and
+Year_sdg8_unemp is not null and
+Score_sdg8_unemp is not null and
+Fundamental_labor_rights_are_effectively_guaranteed is not null and
+Year_sdg8_rights is not null and
+Score_sdg8_rights  is not null;
+
+create table if not exists dwd_R_table_4(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int,
+    n_sdg8_unemp double,
+    n_sdg8_rights double,
+    n_sdg17_statperf double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_R_table_4';
+
+insert overwrite table dwd_R_table_4
+select
+Country_Code_ISO3,
+Country,
+year,
+n_sdg8_unemp,
+n_sdg8_rights,
+n_sdg17_statperf
+from ods_R_total_2
+where year is not null and n_sdg8_unemp is not null and n_sdg8_rights is not null and n_sdg17_statperf is not null ;
+
+create table if not exists dwd_n_2(
+    Neonatal_mortality_rate double,
+    Year_sdg3_neonat int,
+    sdg3_neonat double,
+    Life_expectancy_at_birth double,
+    Year_sdg3_lifee int,
+    Score_sdg3_lifee double,
+    Maternal_mortality_rate double,
+    Year_sdg3_matmort int,
+    sdg3_matmort double,
+    Adjusted_GDP_growth double,
+    Year_sdg8_adjgrowth int,
+    sdg8_adjgrowth double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_n_2';
+
+insert overwrite table dwd_n_2
+select
+Neonatal_mortality_rate,
+Year_sdg3_neonat,
+sdg3_neonat,
+Life_expectancy_at_birth,
+Year_sdg3_lifee,
+Score_sdg3_lifee,
+Maternal_mortality_rate,
+Year_sdg3_matmort,
+sdg3_matmort,
+Adjusted_GDP_growth,
+Year_sdg8_adjgrowth,
+sdg8_adjgrowth
+from ods_n_2
+where Neonatal_mortality_rate is not null and Year_sdg3_neonat is not null and sdg3_neonat is not null and Life_expectancy_at_birth is not null and Year_sdg3_lifee is not null
+and Score_sdg3_lifee is not null and Maternal_mortality_rate is not null and Year_sdg3_matmort is not null and sdg3_matmort is not null and Adjusted_GDP_growth is not null and Year_sdg8_adjgrowth is not null and sdg8_adjgrowth is not null ;
+
+--------ads--------
+drop table if exists ads_Trade_policy_compatibility;
+create table if not exists ads_Trade_policy_compatibility(
+    ISO3 string,
+    country string,
+    SDG_score double,
+    correlation_index_1 double,
+    correlation_index_2 double,
+    correlation_index_3 double,
+    correlation_index_4 double,
+    correlation_index_5 double,
+    correlation_index_6 double,
+    correlation_index_7 double,
+    correlation_index_8 double,
+    correlation_index_9 double,
+    correlation_index_10 double,
+    correlation_index_11 double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/ads/ads_Trade_policy_compatibilit';
+
+insert overwrite table ads_Trade_policy_compatibility
+SELECT
+    tpc1.Country_Code_ISO3 as ISO3,
+    tpc1.Country AS country,
+    tpc1.`2023_SDG_Index_Score` AS `2023_SDG_Index_Score`,
+    (tpc1.Threshold_1 - tpc2_1.Green_threshold) / tpc1.Threshold_1 AS correlation_index_1,
+    (tpc1.Threshold_2 - tpc2_2.Green_threshold) / tpc1.Threshold_2 AS correlation_index_2,
+    (tpc1.Threshold_3 - tpc2_3.Green_threshold) / tpc1.Threshold_3 AS correlation_index_3,
+    (tpc1.Threshold_4 - tpc2_4.Green_threshold) / tpc1.Threshold_4 AS correlation_index_4,
+    (tpc1.Threshold_5 - tpc2_5.Green_threshold) / tpc1.Threshold_5 AS correlation_index_5,
+    (tpc1.Threshold_6 - tpc2_6.Green_threshold) / tpc1.Threshold_6 AS correlation_index_6,
+    (tpc1.Threshold_7 - tpc2_7.Green_threshold) / tpc1.Threshold_7 AS correlation_index_7,
+    (tpc1.Threshold_8 - tpc2_8.Green_threshold) / tpc1.Threshold_8 AS correlation_index_8,
+    (tpc1.Threshold_9 - tpc2_9.Green_threshold) / tpc1.Threshold_9 AS correlation_index_9,
+    (tpc1.Threshold_10 - tpc2_10.Green_threshold) / tpc1.Threshold_10 AS correlation_index_10,
+    (tpc1.Threshold_11 - tpc2_11.Green_threshold) / tpc1.Threshold_11 AS correlation_index_11
+FROM
+    dwd_Trade_policy_compatibility_1 tpc1
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_1 ON tpc2_1.IndCode = 'sdg8_adjgrowth'
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_2 ON tpc2_2.IndCode = 'sdg8_accounts'
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_3 ON tpc2_3.IndCode = 'sdg8_unemp'
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_4 ON tpc2_4.IndCode = 'sdg8_rights'
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_5 ON tpc2_5.IndCode = 'sdg8_impacc'
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_6 ON tpc2_6.IndCode = 'sdg8_impslav'
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_7 ON tpc2_7.IndCode = 'sdg9_lpi'
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_8 ON tpc2_8.IndCode = 'sdg12_so2prod'
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_9 ON tpc2_9.IndCode = 'sdg12_so2import'
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_10 ON tpc2_10.IndCode = 'sdg13_co2import'
+JOIN
+    dwd_Trade_policy_compatibility_2 tpc2_11 ON tpc2_11.IndCode = 'sdg13_co2export';
+
+create table if not exists ads_Multi_indicator_analysis(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    Regions_used_for_the_SDR string comment 'regions',
+    Correlation_coefficient_sdg8_1 double,
+    Correlation_coefficient_sdg8_2 double,
+    Correlation_coefficient_sdg8_3 double,
+    Correlation_coefficient_sdg8_4 double,
+    Correlation_coefficient_sdg8_5 double,
+    Correlation_coefficient_sdg8_6 double,
+    Correlation_coefficient_sdg8_7 double,
+    Correlation_coefficient_sdg8_11 double,
+    Correlation_coefficient_sdg8_12 double,
+    Correlation_coefficient_sdg8_13 double,
+    Correlation_coefficient_sdg8_14 double,
+    Correlation_coefficient_sdg8_15 double,
+    Correlation_coefficient_sdg8_16 double,
+    Correlation_coefficient_sdg9_1 double,
+    Correlation_coefficient_sdg9_2 double,
+    Correlation_coefficient_sdg9_3 double,
+    Correlation_coefficient_sdg9_4 double,
+    Correlation_coefficient_sdg9_5 double,
+    Correlation_coefficient_sdg9_6 double,
+    Correlation_coefficient_sdg9_7 double,
+    Correlation_coefficient_sdg9_11 double,
+    Correlation_coefficient_sdg9_12 double,
+    Correlation_coefficient_sdg9_13 double,
+    Correlation_coefficient_sdg9_14 double,
+    Correlation_coefficient_sdg9_15 double,
+    Correlation_coefficient_sdg9_16 double,
+    Correlation_coefficient_sdg10_1 double,
+    Correlation_coefficient_sdg10_2 double,
+    Correlation_coefficient_sdg10_3 double,
+    Correlation_coefficient_sdg10_4 double,
+    Correlation_coefficient_sdg10_5 double,
+    Correlation_coefficient_sdg10_6 double,
+    Correlation_coefficient_sdg10_7 double,
+    Correlation_coefficient_sdg10_11 double,
+    Correlation_coefficient_sdg10_12 double,
+    Correlation_coefficient_sdg10_13 double,
+    Correlation_coefficient_sdg10_14 double,
+    Correlation_coefficient_sdg10_15 double,
+    Correlation_coefficient_sdg10_16 double,
+    Correlation_coefficient_sdg17_1 double,
+    Correlation_coefficient_sdg17_2 double,
+    Correlation_coefficient_sdg17_3 double,
+    Correlation_coefficient_sdg17_4 double,
+    Correlation_coefficient_sdg17_5 double,
+    Correlation_coefficient_sdg17_6 double,
+    Correlation_coefficient_sdg17_7 double,
+    Correlation_coefficient_sdg17_11 double,
+    Correlation_coefficient_sdg17_12 double,
+    Correlation_coefficient_sdg17_13 double,
+    Correlation_coefficient_sdg17_14 double,
+    Correlation_coefficient_sdg17_15 double,
+    Correlation_coefficient_sdg17_16 double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/ads/ads_Multi_indicator_analysis';
+
+insert overwrite table ads_Multi_indicator_analysis
+select
+Country_Code_ISO3,
+Country,
+Regions_used_for_the_SDR,
+(38 * SUM(goal_8_score * goal_1_score) - SUM(goal_8_score) * SUM(goal_1_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_1_score * goal_1_score) - POW(SUM(goal_1_score), 2)))) AS Correlation_coefficient_sdg8_1,
+(38 * SUM(goal_8_score * goal_2_score) - SUM(goal_8_score) * SUM(goal_2_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_2_score * goal_2_score) - POW(SUM(goal_2_score), 2)))) AS Correlation_coefficient_sdg8_2,
+(38 * SUM(goal_8_score * goal_3_score) - SUM(goal_8_score) * SUM(goal_3_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_3_score * goal_3_score) - POW(SUM(goal_3_score), 2)))) AS Correlation_coefficient_sdg8_3,
+(38 * SUM(goal_8_score * goal_4_score) - SUM(goal_8_score) * SUM(goal_4_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_4_score * goal_4_score) - POW(SUM(goal_4_score), 2)))) AS Correlation_coefficient_sdg8_4,
+(38 * SUM(goal_8_score * goal_5_score) - SUM(goal_8_score) * SUM(goal_5_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_5_score * goal_5_score) - POW(SUM(goal_5_score), 2)))) AS Correlation_coefficient_sdg8_5,
+(38 * SUM(goal_8_score * goal_6_score) - SUM(goal_8_score) * SUM(goal_6_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_6_score * goal_6_score) - POW(SUM(goal_6_score), 2)))) AS Correlation_coefficient_sdg8_6,
+(38 * SUM(goal_8_score * goal_7_score) - SUM(goal_8_score) * SUM(goal_7_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_7_score * goal_7_score) - POW(SUM(goal_7_score), 2)))) AS Correlation_coefficient_sdg8_7,
+(38 * SUM(goal_8_score * goal_11_score) - SUM(goal_8_score) * SUM(goal_11_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_11_score * goal_11_score) - POW(SUM(goal_11_score), 2)))) AS Correlation_coefficient_sdg8_11,
+(38 * SUM(goal_8_score * goal_12_score) - SUM(goal_8_score) * SUM(goal_12_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_12_score * goal_12_score) - POW(SUM(goal_12_score), 2)))) AS Correlation_coefficient_sdg8_12,
+(38 * SUM(goal_8_score * goal_13_score) - SUM(goal_8_score) * SUM(goal_13_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_13_score * goal_13_score) - POW(SUM(goal_13_score), 2)))) AS Correlation_coefficient_sdg8_13,
+(38 * SUM(goal_8_score * goal_14_score) - SUM(goal_8_score) * SUM(goal_14_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_14_score * goal_14_score) - POW(SUM(goal_14_score), 2)))) AS Correlation_coefficient_sdg8_14,
+(38 * SUM(goal_8_score * goal_15_score) - SUM(goal_8_score) * SUM(goal_15_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_15_score * goal_15_score) - POW(SUM(goal_15_score), 2)))) AS Correlation_coefficient_sdg8_15,
+(38 * SUM(goal_8_score * goal_16_score) - SUM(goal_8_score) * SUM(goal_16_score)) / (SQRT((38 * SUM(goal_8_score * goal_8_score) - POW(SUM(goal_8_score), 2)) * (38 * SUM(goal_16_score * goal_16_score) - POW(SUM(goal_16_score), 2)))) AS Correlation_coefficient_sdg8_16,
+(38 * SUM(goal_9_score * goal_1_score) - SUM(goal_9_score) * SUM(goal_1_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_1_score * goal_1_score) - POW(SUM(goal_1_score), 2)))) AS Correlation_coefficient_sdg9_1,
+(38 * SUM(goal_9_score * goal_2_score) - SUM(goal_9_score) * SUM(goal_2_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_2_score * goal_2_score) - POW(SUM(goal_2_score), 2)))) AS Correlation_coefficient_sdg9_2,
+(38 * SUM(goal_9_score * goal_3_score) - SUM(goal_9_score) * SUM(goal_3_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_3_score * goal_3_score) - POW(SUM(goal_3_score), 2)))) AS Correlation_coefficient_sdg9_3,
+(38 * SUM(goal_9_score * goal_4_score) - SUM(goal_9_score) * SUM(goal_4_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_4_score * goal_4_score) - POW(SUM(goal_4_score), 2)))) AS Correlation_coefficient_sdg9_4,
+(38 * SUM(goal_9_score * goal_5_score) - SUM(goal_9_score) * SUM(goal_5_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_5_score * goal_5_score) - POW(SUM(goal_5_score), 2)))) AS Correlation_coefficient_sdg9_5,
+(38 * SUM(goal_9_score * goal_6_score) - SUM(goal_9_score) * SUM(goal_6_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_6_score * goal_6_score) - POW(SUM(goal_6_score), 2)))) AS Correlation_coefficient_sdg9_6,
+(38 * SUM(goal_9_score * goal_7_score) - SUM(goal_9_score) * SUM(goal_7_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_7_score * goal_7_score) - POW(SUM(goal_7_score), 2)))) AS Correlation_coefficient_sdg9_7,
+(38 * SUM(goal_9_score * goal_11_score) - SUM(goal_9_score) * SUM(goal_11_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_11_score * goal_11_score) - POW(SUM(goal_11_score), 2)))) AS Correlation_coefficient_sdg9_11,
+(38 * SUM(goal_9_score * goal_12_score) - SUM(goal_9_score) * SUM(goal_12_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_12_score * goal_12_score) - POW(SUM(goal_12_score), 2)))) AS Correlation_coefficient_sdg9_12,
+(38 * SUM(goal_9_score * goal_13_score) - SUM(goal_9_score) * SUM(goal_13_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_13_score * goal_13_score) - POW(SUM(goal_13_score), 2)))) AS Correlation_coefficient_sdg9_13,
+(38 * SUM(goal_9_score * goal_14_score) - SUM(goal_9_score) * SUM(goal_14_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_14_score * goal_14_score) - POW(SUM(goal_14_score), 2)))) AS Correlation_coefficient_sdg9_14,
+(38 * SUM(goal_9_score * goal_15_score) - SUM(goal_9_score) * SUM(goal_15_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_15_score * goal_15_score) - POW(SUM(goal_15_score), 2)))) AS Correlation_coefficient_sdg9_15,
+(38 * SUM(goal_9_score * goal_16_score) - SUM(goal_9_score) * SUM(goal_16_score)) / (SQRT((38 * SUM(goal_9_score * goal_9_score) - POW(SUM(goal_9_score), 2)) * (38 * SUM(goal_16_score * goal_16_score) - POW(SUM(goal_16_score), 2)))) AS Correlation_coefficient_sdg9_16,
+(38 * SUM(goal_10_score * goal_1_score) - SUM(goal_10_score) * SUM(goal_1_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_1_score * goal_1_score) - POW(SUM(goal_1_score), 2)))) AS Correlation_coefficient_sdg10_1,
+(38 * SUM(goal_10_score * goal_2_score) - SUM(goal_10_score) * SUM(goal_2_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_2_score * goal_2_score) - POW(SUM(goal_2_score), 2)))) AS Correlation_coefficient_sdg10_2,
+(38 * SUM(goal_10_score * goal_3_score) - SUM(goal_10_score) * SUM(goal_3_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_3_score * goal_3_score) - POW(SUM(goal_3_score), 2)))) AS Correlation_coefficient_sdg10_3,
+(38 * SUM(goal_10_score * goal_4_score) - SUM(goal_10_score) * SUM(goal_4_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_4_score * goal_4_score) - POW(SUM(goal_4_score), 2)))) AS Correlation_coefficient_sdg10_4,
+(38 * SUM(goal_10_score * goal_5_score) - SUM(goal_10_score) * SUM(goal_5_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_5_score * goal_5_score) - POW(SUM(goal_5_score), 2)))) AS Correlation_coefficient_sdg10_5,
+(38 * SUM(goal_10_score * goal_6_score) - SUM(goal_10_score) * SUM(goal_6_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_6_score * goal_6_score) - POW(SUM(goal_6_score), 2)))) AS Correlation_coefficient_sdg10_6,
+(38 * SUM(goal_10_score * goal_7_score) - SUM(goal_10_score) * SUM(goal_7_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_7_score * goal_7_score) - POW(SUM(goal_7_score), 2)))) AS Correlation_coefficient_sdg10_7,
+(38 * SUM(goal_10_score * goal_11_score) - SUM(goal_10_score) * SUM(goal_11_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_11_score * goal_11_score) - POW(SUM(goal_11_score), 2)))) AS Correlation_coefficient_sdg10_11,
+(38 * SUM(goal_10_score * goal_12_score) - SUM(goal_10_score) * SUM(goal_12_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_12_score * goal_12_score) - POW(SUM(goal_12_score), 2)))) AS Correlation_coefficient_sdg10_12,
+(38 * SUM(goal_10_score * goal_13_score) - SUM(goal_10_score) * SUM(goal_13_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_13_score * goal_13_score) - POW(SUM(goal_13_score), 2)))) AS Correlation_coefficient_sdg10_13,
+(38 * SUM(goal_10_score * goal_14_score) - SUM(goal_10_score) * SUM(goal_14_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_14_score * goal_14_score) - POW(SUM(goal_14_score), 2)))) AS Correlation_coefficient_sdg10_14,
+(38 * SUM(goal_10_score * goal_15_score) - SUM(goal_10_score) * SUM(goal_15_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_15_score * goal_15_score) - POW(SUM(goal_15_score), 2)))) AS Correlation_coefficient_sdg10_15,
+(38 * SUM(goal_10_score * goal_16_score) - SUM(goal_10_score) * SUM(goal_16_score)) / (SQRT((38 * SUM(goal_10_score * goal_10_score) - POW(SUM(goal_10_score), 2)) * (38 * SUM(goal_16_score * goal_16_score) - POW(SUM(goal_16_score), 2)))) AS Correlation_coefficient_sdg10_16,
+(38 * SUM(goal_17_score * goal_1_score) - SUM(goal_17_score) * SUM(goal_1_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_1_score * goal_1_score) - POW(SUM(goal_1_score), 2)))) AS Correlation_coefficient_sdg17_1,
+(38 * SUM(goal_17_score * goal_2_score) - SUM(goal_17_score) * SUM(goal_2_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_2_score * goal_2_score) - POW(SUM(goal_2_score), 2)))) AS Correlation_coefficient_sdg17_2,
+(38 * SUM(goal_17_score * goal_3_score) - SUM(goal_17_score) * SUM(goal_3_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_3_score * goal_3_score) - POW(SUM(goal_3_score), 2)))) AS Correlation_coefficient_sdg17_3,
+(38 * SUM(goal_17_score * goal_4_score) - SUM(goal_17_score) * SUM(goal_4_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_4_score * goal_4_score) - POW(SUM(goal_4_score), 2)))) AS Correlation_coefficient_sdg17_4,
+(38 * SUM(goal_17_score * goal_5_score) - SUM(goal_17_score) * SUM(goal_5_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_5_score * goal_5_score) - POW(SUM(goal_5_score), 2)))) AS Correlation_coefficient_sdg17_5,
+(38 * SUM(goal_17_score * goal_6_score) - SUM(goal_17_score) * SUM(goal_6_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_6_score * goal_6_score) - POW(SUM(goal_6_score), 2)))) AS Correlation_coefficient_sdg17_6,
+(38 * SUM(goal_17_score * goal_7_score) - SUM(goal_17_score) * SUM(goal_7_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_7_score * goal_7_score) - POW(SUM(goal_7_score), 2)))) AS Correlation_coefficient_sdg17_7,
+(38 * SUM(goal_17_score * goal_11_score) - SUM(goal_17_score) * SUM(goal_11_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_11_score * goal_11_score) - POW(SUM(goal_11_score), 2)))) AS Correlation_coefficient_sdg17_11,
+(38 * SUM(goal_17_score * goal_12_score) - SUM(goal_17_score) * SUM(goal_12_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_12_score * goal_12_score) - POW(SUM(goal_12_score), 2)))) AS Correlation_coefficient_sdg17_12,
+(38 * SUM(goal_17_score * goal_13_score) - SUM(goal_17_score) * SUM(goal_13_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_13_score * goal_13_score) - POW(SUM(goal_13_score), 2)))) AS Correlation_coefficient_sdg17_13,
+(38 * SUM(goal_17_score * goal_14_score) - SUM(goal_17_score) * SUM(goal_14_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_14_score * goal_14_score) - POW(SUM(goal_14_score), 2)))) AS Correlation_coefficient_sdg17_14,
+(38 * SUM(goal_17_score * goal_15_score) - SUM(goal_17_score) * SUM(goal_15_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_15_score * goal_15_score) - POW(SUM(goal_15_score), 2)))) AS Correlation_coefficient_sdg17_15,
+(38 * SUM(goal_17_score * goal_16_score) - SUM(goal_17_score) * SUM(goal_16_score)) / (SQRT((38 * SUM(goal_17_score * goal_17_score) - POW(SUM(goal_17_score), 2)) * (38 * SUM(goal_16_score * goal_16_score) - POW(SUM(goal_16_score), 2)))) AS Correlation_coefficient_sdg17_16
+FROM
+    dwd_Multi_indicator_analysis
+WHERE
+    Regions_used_for_the_SDR = 'OECD'
+GROUP BY
+    Country_Code_ISO3, Country, Regions_used_for_the_SDR;
+
+create table if not exists ads_trend_analysis(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int comment 'year',
+    Goal_8_Score double,
+    sdg8_unemp double,
+    sdg8_adjgrowth double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/ads/ads_trend_analysis';
+
+insert overwrite table ads_trend_analysis
+select * from ods_trend_analysis_1
+union all
+select * from ods_trend_analysis_2;
+
+create table if not exists ads_R_1(
+    Country string comment 'Country',
+    year int comment 'year',
+    n_sdg2_wasting double,
+    n_sdg10_gini double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/ads/ads_trend_analysis';
+
+insert overwrite table ads_R_1
+SELECT d.Country, d.Year, d.n_sdg2_wasting, d.n_sdg10_gini
+FROM dwd_r_table_2 d
+ORDER BY d.Country, d.Year;
+
+create table if not exists ods_n_4(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int comment 'year',
+    n_sdg17_govrev double,
+    n_sdg8_adjgrowth double,
+    sdg_3_Score double,
+    sdg_4_Score double
+)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    NULL DEFINED AS ''
+    LOCATION '/158888/ods/ods_n_4';
+    LOAD DATA inpath '/order/n_4' overwrite into table ods_n_4;
+
+create table if not exists ods_n_5(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    2023_SDG_Index_Score double,
+    Adjusted_GDP_growth double,
+    Year_sdg8_adjgrowth double,
+    sdg8_adjgrowth double,
+    sdg_3_Score double,
+    sdg_4_Score double,
+    Government_spending_on_health_and_education double,
+    Year_sdg17_govex int,
+    sdg17_govex double
+)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    NULL DEFINED AS ''
+    LOCATION '/158888/ods/ods_n_5';
+    LOAD DATA inpath '/order/n_5' overwrite into table ods_n_5;
+
+create table if not exists dwd_n_4(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    year int,
+    n_sdg17_govrev double,
+    n_sdg8_adjgrowth double,
+    sdg_3_Score double,
+    sdg_4_Score double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_n_4';
+
+insert overwrite table dwd_n_4
+select
+Country_Code_ISO3,
+Country,
+year,
+n_sdg17_govrev,
+n_sdg8_adjgrowth,
+sdg_3_Score,
+sdg_4_Score
+from ods_n_4
+where year is not null and n_sdg17_govrev is not null and n_sdg8_adjgrowth is not null and sdg_3_Score is not null and sdg_4_Score is not null ;
+
+create table if not exists dwd_n_5(
+    Country_Code_ISO3 string comment 'CCI',
+    Country string comment 'Country',
+    2023_SDG_Index_Score double,
+    Adjusted_GDP_growth double,
+    Year_sdg8_adjgrowth double,
+    sdg8_adjgrowth double,
+    sdg_3_Score double,
+    sdg_4_Score double,
+    Government_spending_on_health_and_education double,
+    Year_sdg17_govex int,
+    sdg17_govex double
+)
+row format delimited fields terminated by '/t'
+    NULL DEFINED AS ''
+    location '/158888/dwd/dwd_n_5';
+
+insert overwrite table dwd_n_5
+select
+Country_Code_ISO3,
+Country,
+2023_SDG_Index_Score,
+Adjusted_GDP_growth,
+Year_sdg8_adjgrowth,
+sdg8_adjgrowth,
+sdg_3_Score,
+sdg_4_Score,
+Government_spending_on_health_and_education,
+Year_sdg17_govex,
+sdg17_govex
+from ods_n_5
+where 2023_SDG_Index_Score is not null and Adjusted_GDP_growth is not null and Year_sdg8_adjgrowth is not null and sdg8_adjgrowth is not null and sdg_3_Score is not null and sdg_4_Score is not null and Government_spending_on_health_and_education is not null and Year_sdg17_govex is not null and sdg17_govex is not null ;
