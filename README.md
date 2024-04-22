@@ -6,6 +6,7 @@ Statement: This project is a project of the fifth group of Massey University's 1
 The original data of the project comes from: https://dashboards.sdgindex.org/downloads.
 
 This part is the virtual machine used in the project.
+
 https://masseyuni-my.sharepoint.com/:f:/g/personal/23019676_massey_ac_nz/EiJS7uQA0NtGnBopB6h5rAcBrYXHEm8irNRcHJNKNIwTjg?e=xaT9Sl
 This link comes from Massey University's Onedrive. The permissions set are editable by Massey University users. You can access it through this link.
 
