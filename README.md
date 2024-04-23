@@ -15,6 +15,7 @@ About virtual machines:
 Why upload to Onedrive?
 Because this virtual machine is too large (about 80GB), it contains the Hadoop cluster and database installed by our team (the database has been uploaded in this project), which is the key to running the data warehouse.
 Of course, it is not necessary to run this virtual machine completely, because we only perform the data processing part on the virtual machine. You can view the processed data and SQL code in the library I uploaded.
+If you are not running a Hadoop cluster, you can download SDGs_analysis.sql directly. This file contains the tables to be processed. After uploading this sql file to MySQL and running the SQL code in 158888_SQL_code.txt, you can also get the data processing results (but the processing speed is much slower than the Hadoop cluster).
 
 If you want to use a virtual machine to view the data processing process, please refer to the "Virtual Machine Usage Document" we uploaded, which contains detailed virtual machine account passwords, how to use the cluster startup script, how to start Hive, etc.Not all data in this project is processed through Hive, and some are also processed through Excel. Please refer to the uploaded chart for details.
 
