@@ -22,3 +22,7 @@ If you want to use a virtual machine to view the data processing process, please
 Please refer to the 158888_group_5.ipynb file to view the algorithm used in this project.
 
 The data tables used in 158888_group_5.ipynb are all in the data file folder. The code of this project runs using Google's managed Jupyter notebook service - Colab. It can also be run using Jupyter Notebook but the necessary libraries need to be installed. For details, please refer to the detailed code.
+
+In this project, all data and virtual machine resources are managed by "158888 Group 5 Team". No individual or group is allowed to use these resources for commercial profit or academic research activities without the express authorization of the team.
+
+All data within the "Data Package-Shengliang Zou" folder is processed and managed by Shengliang Zou. No individual or group may use the data in this folder for profit-making activities or academic research without the express authorization of Shengliang Zou.
