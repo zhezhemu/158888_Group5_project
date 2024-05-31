@@ -19,7 +19,7 @@ If you are not running a Hadoop cluster, you can download SDGs_analysis.sql dire
 
 If you want to use a virtual machine to view the data processing process, please refer to the "Virtual Machine Usage Document" we uploaded, which contains detailed virtual machine account passwords, how to use the cluster startup script, how to start Hive, etc.Not all data in this project is processed through Hive, and some are also processed through Excel. Please refer to the uploaded chart for details.
 
-Please refer to the 158888_group_5.ipynb file to view the algorithm used in this project.
+Please refer to the 158888_group_5_new.ipynb file to view the algorithm used in this project.
 
 The data tables used in 158888_group_5.ipynb are all in the data file folder. The code of this project runs using Google's managed Jupyter notebook service - Colab. It can also be run using Jupyter Notebook but the necessary libraries need to be installed. For details, please refer to the detailed code.
 
