@@ -26,3 +26,8 @@ The data tables used in 158888_group_5.ipynb are all in the data file folder. Th
 In this project, all data and virtual machine resources are managed by "158888 Group 5 Team". No individual or group is allowed to use these resources for commercial profit or academic research activities without the express authorization of the team.
 
 All data within the "Data Package-Shengliang Zou" folder is processed and managed by Shengliang Zou. No individual or group may use the data in this folder for profit-making activities or academic research without the express authorization of Shengliang Zou.
+
+The project-related videos have been uploaded to Massey University OneDrive, the link is:
+https://masseyuni-my.sharepoint.com/:f:/g/personal/23019676_massey_ac_nz/EqzKsZypd6BHhkS4vfQVRZQBSPAEUvRSFE3j3603HUdM5w?e=8vvuDs
+
+It contains two videos, one is the project demonstration video, and the other is how to install and use the project virtual machine, start the Hadoop cluster and other operations (this is for the convenience of later users to verify the project video, for more details, please see the Virtual machine usage documentation.docx file uploaded on github).
