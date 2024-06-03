@@ -1,5 +1,5 @@
 # 158888_Group5_project
-The code part and the data part of 158888 Group 5 project Research on the compatibility between economic growth and Sustainable Development Goals by using the data warehousing
+The code part and the data part of 158888 Group 5 project Evaluating compatibility between regional economic growth and the Sustainable Development Goal indicators through data warehousing.
 
 Usage details about this project:
 Statement: This project is a project of the fifth group of Massey University's 158888 IT professional project course. The paper coordinator is Professor Sanjay Mathrani, and the project members are Kaipeng Han, Shengliang  Zou, Yixuan Niu, and Zhangrui Ren. Any commercial activities are prohibited.
